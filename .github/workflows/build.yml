@@ -1,21 +1,18 @@
-name: Build Library
+name: Build & Deploy Storybook
 
 on:
   push:
     branches:
       - main
 
-  pull_request:
-    branches:
-      - main
-
 jobs:
-  build:
-
+  build-and-deploy:
     runs-on: ubuntu-latest
 
-    steps:
+    permissions:
+      contents: write
 
+    steps:
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -27,5 +24,14 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build Library
         run: npm run build
+
+      - name: Build Storybook
+        run: npm run build-storybook
+
+      - name: Deploy Storybook
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./storybook-static
