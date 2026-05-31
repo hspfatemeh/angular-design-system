@@ -22,7 +22,7 @@ export const Primary: Story = {
           [disabled]="disabled"
           [loading]="loading"
          >
-          Save
+          ثبت
         </ui-button>
       `
     }),
@@ -36,19 +36,123 @@ export const Primary: Story = {
   };
 
 export const Danger: Story = {
-  args: {
-    variant: 'danger',
-  },
+    render: (args) => ({
+        props: args,
+        template: `
+          <ui-button
+            [variant]="variant"
+            [size]="size"
+            [appearance]="appearance"
+            [disabled]="disabled"
+            [loading]="loading"
+           >
+            حذف
+          </ui-button>
+        `
+      }),
+      args: {
+        variant: 'danger',
+        size: 'md',
+        appearance: 'solid',
+        disabled: false,
+        loading: false,
+      }
 };
 
-export const Loading: Story = {
-  args: {
-    loading: true,
-  },
+export const warning: Story = {
+    render: (args) => ({
+        props: args,
+        template: `
+          <ui-button
+            [variant]="variant"
+            [size]="size"
+            [appearance]="appearance"
+            [disabled]="disabled"
+            [loading]="loading"
+           >
+            هشدار
+          </ui-button>
+        `
+      }),
+      args: {
+        variant: 'warning',
+        size: 'md',
+        appearance: 'outline',
+        disabled: false,
+        loading: false,
+      }
 };
 
-export const Disabled: Story = {
-  args: {
-    disabled: true,
-  },
+export const secondary: Story = {
+    render: (args) => ({
+        props: args,
+        template: `
+          <ui-button
+            [variant]="variant"
+            [size]="size"
+            [appearance]="appearance"
+            [disabled]="disabled"
+            [loading]="loading"
+           >
+           ویرایش
+          </ui-button>
+        `
+      }),
+      args: {
+        variant: 'secondary',
+        size: 'md',
+        appearance: 'link',
+        disabled: true,
+        loading: false,
+      }
+};
+
+
+export const success: Story = {
+    render: (args) => ({
+        props: args,
+        template: `
+          <ui-button
+            [variant]="variant"
+            [size]="size"
+            [appearance]="appearance"
+            [disabled]="disabled"
+            [loading]="loading"
+           >
+            تایید
+          </ui-button>
+        `
+      }),
+      args: {
+        variant: 'success',
+        size: 'md',
+        appearance: 'solid',
+        disabled: false,
+        loading: false,
+      }
+};
+
+
+export const info: Story = {
+    render: (args) => ({
+        props: args,
+        template: `
+          <ui-button
+            [variant]="variant"
+            [size]="size"
+            [appearance]="appearance"
+            [disabled]="disabled"
+            [loading]="loading"
+           >
+            اطلاعات
+          </ui-button>
+        `
+      }),
+      args: {
+        variant: 'info',
+        size: 'md',
+        appearance: 'ghost',
+        disabled: false,
+        loading: true,
+      }
 };
