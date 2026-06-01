@@ -11,8 +11,10 @@ import { ButtonAppearance, ButtonSize, ButtonVariant } from './button.types';
 })
 export class Button {
     
-  buttonClasses = computed(() =>
-    [
+  buttonClasses = computed(() => {
+    const isIconOnly =!!this.icon() && !this.label();
+
+    return [
       'ui-button',
   
       `ui-button--${this.variant()}`,
@@ -20,28 +22,28 @@ export class Button {
       `ui-button--${this.appearance()}`,
   
       this.loading() && 'ui-button--loading',
-  
       this.disabled() && 'ui-button--disabled',
-  
       this.fullWidth() && 'ui-button--full',
-  
       this.rounded() && 'ui-button--rounded',
   
-      this.iconOnly() && 'ui-button--icon-only',
-  
+      isIconOnly && 'ui-button--icon-only',
       this.elevated() && 'ui-button--elevated'
     ]
       .filter(Boolean)
-      .join(' ')
-  );
+      .join(' ');
+  });
 
+  label = input<string | null>(null);
   variant= input<ButtonVariant>('primary');
   size= input<ButtonSize>('md');
   appearance=input<ButtonAppearance>('solid');
   disabled = input(false);
   loading = input(false);
   fullWidth = input(false);
-  iconOnly = input(false);
+
+  icon = input<string | null>(null);
+  iconPosition = input<'left' | 'right'>('left');
+
   rounded = input(false);
   
   elevated = input(false);
@@ -56,7 +58,6 @@ export class Button {
   
   loadingText = input('Loading...');
 
-  leftIcon = input<string | null>(null);
-  rightIcon = input<string | null>(null);
+
 
 }

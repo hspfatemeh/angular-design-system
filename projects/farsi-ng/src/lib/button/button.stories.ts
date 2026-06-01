@@ -21,8 +21,8 @@ export const Primary: Story = {
           [appearance]="appearance"
           [disabled]="disabled"
           [loading]="loading"
-         >
-          ثبت
+          [label]="label" >
+          
         </ui-button>
       `
     }),
@@ -32,6 +32,7 @@ export const Primary: Story = {
       appearance: 'solid',
       disabled: false,
       loading: false,
+      label:'save'
     }
   };
 
@@ -151,7 +152,7 @@ export const info: Story = {
       args: {
         variant: 'info',
         size: 'md',
-        appearance: 'ghost',
+        appearance: "solid",
         disabled: false,
         loading: true,
       }

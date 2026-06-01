@@ -18,4 +18,5 @@
   | 'solid'
   | 'outline'
   | 'ghost'
-  | 'link';
+  | 'link'
+  | 'soft';

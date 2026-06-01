@@ -1,32 +1,37 @@
 $ui-primary: #007979;
-$ui-secondary: #64748b;
-$ui-success: #16a34a;
-$ui-warning: #f59e0b;
-$ui-danger: #dc2626;
+$ui-on-primary: #e8e8eb;
+$ui-secondary: #e8e8eb;
+$ui-success: #2bb05c;
+$ui-warning: #f7af33;
+$ui-danger: #ec4444;
 $ui-info: #0284c7;
 
-$ui-radius: 8px;
+$ui-radius: 1rem;
 
-$ui-space-xs: 4px 8px;
-$ui-space-sm: 8px 12px;
-$ui-space-md: 12px 16px;
-$ui-space-lg: 14px 20px;
-$ui-space-xl: 16px 24px;
+$ui-space-xs: 4px 17px;
+$ui-space-sm: 8px 22px;
+$ui-space-md: 12px 25px;
+$ui-space-lg: 14px 27px;
+$ui-space-xl: 16px 29px;
+
+
+[data-theme='dark'] {
+  --btn-primary: #f1f2f2;
+  --ui-primary-text:#007979;
+}
 
 .ui-button {
   position: relative;
-
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-
+  gap: 0.5rem;  
   border: none;
+  flex-shrink: 0;
   border-radius: $ui-radius;
-
   font-weight: 500;
   line-height: 1;
-
   cursor: pointer;
 
   transition:
@@ -50,33 +55,48 @@ $ui-space-xl: 16px 24px;
   }
 }
 
+.ui-button__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  
+}
+
+
 .ui-button--xs {
     padding: $ui-space-xs;
+    min-height: 44px;
     font-size: 12px;
   }
   
   .ui-button--sm {
+    min-height: 44px;
     padding: $ui-space-sm;
     font-size: 14px;
   }
   
   .ui-button--md {
+    min-height: 2.5rem;
     padding: $ui-space-md;
     font-size: 16px;
   }
   
   .ui-button--lg {
+    min-height: 3rem;
     padding: $ui-space-lg;
     font-size: 18px;
   }
   
   .ui-button--xl {
+    min-height: 3.5rem; 
     padding: $ui-space-xl;
     font-size: 20px;
   }
 
   .ui-button--primary {
     --btn-color: #{$ui-primary};
+    --btn-on-color: #{$ui-on-primary};
   }
   
   .ui-button--secondary {
@@ -107,7 +127,7 @@ $ui-space-xl: 16px 24px;
   .ui-button--outline {
     background: transparent;
   
-    border: 1px solid var(--btn-color);
+    border: 2px solid var(--btn-color);
   
     color: var(--btn-color);
   }
@@ -120,6 +140,16 @@ $ui-space-xl: 16px 24px;
     &:hover:not(:disabled) {
       background: rgba(0, 0, 0, .05);
     }
+  }
+
+  .ui-button--soft {
+    background: color-mix(
+      in srgb,
+      var(--btn-color) 15%,
+      transparent
+    );
+  
+    color: var(--btn-color);
   }
 
   .ui-button--link {
@@ -148,6 +178,7 @@ $ui-space-xl: 16px 24px;
 
   .ui-button--full {
     width: 100%;
+    display: flex;
   }
 
   .ui-button--rounded {
@@ -169,10 +200,8 @@ $ui-space-xl: 16px 24px;
 
   .ui-button--icon-only {
     padding: 0;
-  
     width: 40px;
     height: 40px;
-  
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -223,6 +252,17 @@ $ui-space-xl: 16px 24px;
   border-top-color: currentColor;
 }
 
+.ui-button--xs .ui-button__spinner {
+  width: 12px;
+  height: 12px;
+}
+
+.ui-button--xl .ui-button__spinner {
+  width: 20px;
+  height: 20px;
+}
+
+
 @keyframes ui-spin {
     from {
       transform: rotate(0deg);
@@ -230,6 +270,29 @@ $ui-space-xl: 16px 24px;
   
     to {
       transform: rotate(360deg);
+    }
+  }
+
+  
+
+  .ui-button:focus-visible {
+    outline: none;
+  
+    box-shadow:
+      0 0 0 3px rgba(0, 121, 121, .2),
+      0 0 0 5px rgba(0, 121, 121, .4);
+  }
+
+  @media (forced-colors: active) {
+
+    .ui-button {
+      border: 1px solid ButtonText;
+  
+      forced-color-adjust: auto;
+    }
+  
+    .ui-button:focus-visible {
+      outline: 2px solid Highlight;
     }
   }
 
