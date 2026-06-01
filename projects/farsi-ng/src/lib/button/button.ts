@@ -5,7 +5,40 @@ import { ButtonAppearance, ButtonSize, ButtonVariant } from './button.types';
   selector: 'ui-button',
   imports: [],
   standalone: true,
-  templateUrl: './button.html',
+  template: `<button
+  [disabled]="disabled() || loading()"
+  [attr.aria-busy]="loading()"
+  [attr.aria-label]="ariaLabel()  || label()"
+  [class]="buttonClasses()"
+  >
+  @if (loading()) {
+    <span class="ui-button__spinner" aria-hidden="true"></span>
+  }@else{
+    @if (icon() && iconPosition() === 'left' && !loading()) {
+      <span class="ui-button__icon">
+        <i [class]="icon()"></i>
+      </span>
+    }
+    
+    @if (label()) {
+      <span class="ui-button__content">
+        {{ label() }}
+      </span>
+    } @else {
+      <span class="ui-button__content">
+        <ng-content />
+      </span>
+    }
+    
+    @if (icon() && iconPosition() === 'right' && !loading()) {
+      <span class="ui-button__icon">
+        <i [class]="icon()"></i>
+      </span>
+    }
+
+  }
+</button>
+`,
   styleUrls: ['./button.scss'],
   changeDetection:ChangeDetectionStrategy.OnPush
 })

@@ -26,12 +26,6 @@
           },
           "defaultConfiguration": "production"
         },
-        "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "tsConfig": "projects/farsi-ng/tsconfig.spec.json"
-          }
-        },
         "storybook": {
           "builder": "@storybook/angular:start-storybook",
           "options": {
